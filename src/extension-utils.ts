@@ -14,10 +14,17 @@ const readConfigValue = (key: string, defaultValue: string) => {
 };
 
 const readConfig = (): ExtensionConfig => {
+	const section = vscode.workspace.getConfiguration("go-to-code");
+
 	return {
-		testPaths: readConfigValue("test-path", "tests|test|.").split("|"),
-		storyPaths: readConfigValue("story-path", "stories|story|.").split("|"),
-		stylePaths: readConfigValue("style-path", "styles|style|.").split("|"),
+		storyPaths: readConfigValue("storyPath", "stories|story").split("|"),
+		stylePaths: readConfigValue("stylePath", "styles|style").split("|"),
+		testPaths: readConfigValue("testPath", "tests|test").split("|"),
+
+		sourceNameCase: section.get<string>("sourceNameCase"),
+		storyNameCase: section.get<string>("storyNameCase"),
+		styleNameCase: section.get<string>("styleNameCase"),
+		testNameCase: section.get<string>("testNameCase"),
 	};
 };
 
