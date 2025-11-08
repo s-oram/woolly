@@ -1,6 +1,6 @@
 {
-  "name": "goto-code",
-  "displayName": "goto-code",
+  "name": "go-to-code",
+  "displayName": "Go To Code",
   "description": "Shortcuts to go to the code",
   "version": "0.0.1",
   "engines": {
@@ -14,19 +14,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "goto-code.openStories",
+        "command": "go-to-code.openStories",
         "title": "Open Stories"
       },
       {
-        "command": "goto-code.openTests",
+        "command": "go-to-code.openTests",
         "title": "Open Tests"
       },
       {
-        "command": "goto-code.openStyles",
+        "command": "go-to-code.openStyles",
         "title": "Open Styles"
       },
       {
-        "command": "goto-code.openSource",
+        "command": "go-to-code.openSource",
         "title": "Open Source"
       }
     ]
