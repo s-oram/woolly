@@ -1,19 +1,17 @@
 import * as vscode from "vscode";
 
-const getWorkspaceFolders = () => {
-	const folders = vscode.workspace.workspaceFolders || [];
-	return folders.map((folder) => folder.uri.fsPath);
-};
-
-export const openSource = (outputChannel: vscode.OutputChannel) => () => {
+export const openSource = (outputChannel: vscode.OutputChannel) => async () => {
 	outputChannel.show(true);
-	outputChannel.appendLine(`foobar1`);
-
-	const folders = getWorkspaceFolders();
-	outputChannel.appendLine(`foobar2`);
-	outputChannel.appendLine(`::: folders: ${folders}`);
-
-	vscode.window.showInformationMessage("openSource");
+	const activeEditor = vscode.window.activeTextEditor;
+	if (activeEditor) {
+		outputChannel.appendLine(activeEditor.document.uri.fsPath);
+		const uri = vscode.Uri.file(
+			"/Users/shannon/dev/webdev/shared-react-components/src/components/atoms/Layout.tsx",
+		);
+		const doc = await vscode.workspace.openTextDocument(uri);
+		await vscode.window.showTextDocument(doc);
+		vscode.window.showInformationMessage("openSource");
+	}
 };
 
 export const openStories = () => {
