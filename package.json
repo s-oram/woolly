@@ -15,19 +15,19 @@
     "commands": [
       {
         "command": "go-to-code.openStories",
-        "title": "Open Stories"
+        "title": "GoToCode: Open Stories"
       },
       {
         "command": "go-to-code.openTests",
-        "title": "Open Tests"
+        "title": "GoToCode: Open Tests"
       },
       {
         "command": "go-to-code.openStyles",
-        "title": "Open Styles"
+        "title": "GoToCode: Open Styles"
       },
       {
         "command": "go-to-code.openSource",
-        "title": "Open Source"
+        "title": "GoToCode: Open Source"
       }
     ]
   },
