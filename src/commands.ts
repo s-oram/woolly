@@ -1,29 +1,29 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 const getWorkspaceFolders = () => {
-  const folders = vscode.workspace.workspaceFolders || [];
-  return folders.map(folder => folder.uri.fsPath);
+	const folders = vscode.workspace.workspaceFolders || [];
+	return folders.map((folder) => folder.uri.fsPath);
 };
 
 export const openSource = (outputChannel: vscode.OutputChannel) => () => {
-  outputChannel.appendLine('hello world');
-  outputChannel.show(true);
-  console.info('Extension "goto-code" is now active');
+	outputChannel.show(true);
+	outputChannel.appendLine(`foobar1`);
 
-  const folders = getWorkspaceFolders();
-  console.log('::: folders', folders);
-  vscode.window.showInformationMessage('openSource');
+	const folders = getWorkspaceFolders();
+	outputChannel.appendLine(`foobar2`);
+	outputChannel.appendLine(`::: folders: ${folders}`);
+
+	vscode.window.showInformationMessage("openSource");
 };
 
 export const openStories = () => {
-  vscode.window.showInformationMessage('openStories');
+	vscode.window.showInformationMessage("openStories");
 };
 
-
 export const openStyles = () => {
-  vscode.window.showInformationMessage('openStyles');
+	vscode.window.showInformationMessage("openStyles");
 };
 
 export const openTests = () => {
-  vscode.window.showInformationMessage('openTests');
+	vscode.window.showInformationMessage("openTests");
 };

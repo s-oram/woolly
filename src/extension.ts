@@ -3,7 +3,7 @@ import { openSource, openStories, openStyles, openTests } from "./commands";
 
 export function activate(context: vscode.ExtensionContext) {
 	const outputChannel = vscode.window.createOutputChannel("Go To Code");
-	outputChannel.append("initialized");
+	outputChannel.appendLine("Go To Code extension initialised");
 
 	outputChannel.show(false);
 
