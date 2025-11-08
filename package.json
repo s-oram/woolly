@@ -44,7 +44,7 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test",
-    "build-vsix": "vsce package"
+    "build-vsix": "mkdir -p extension && vsce package --out 'extension/go-to-code.vsix' --allow-missing-repository --skip-license"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
