@@ -7,7 +7,10 @@ describe("getSourceCandidates", () => {
 			"path/components/stories/FancyButton.stories.tsx",
 		);
 		const candidates = getSourceCandidates(properties);
-		expect(candidates).toEqual(["path/components/FancyButton.tsx"]);
+		expect(candidates).toEqual([
+			"path/components/FancyButton.tsx",
+			"path/components/fancy-button.tsx",
+		]);
 	});
 
 	test("should return candidates for /tests/FancyButton.test.tsx", async () => {
@@ -15,7 +18,10 @@ describe("getSourceCandidates", () => {
 			"path/components/tests/FancyButton.test.tsx",
 		);
 		const candidates = getSourceCandidates(properties);
-		expect(candidates).toEqual(["path/components/FancyButton.tsx"]);
+		expect(candidates).toEqual([
+			"path/components/FancyButton.tsx",
+			"path/components/fancy-button.tsx",
+		]);
 	});
 
 	test("should return candidates for /styles/FancyButton.module.scss", async () => {
@@ -28,6 +34,10 @@ describe("getSourceCandidates", () => {
 			"path/components/FancyButton.ts",
 			"path/components/FancyButton.jsx",
 			"path/components/FancyButton.js",
+			"path/components/fancy-button.tsx",
+			"path/components/fancy-button.ts",
+			"path/components/fancy-button.jsx",
+			"path/components/fancy-button.js",
 		]);
 	});
 });
