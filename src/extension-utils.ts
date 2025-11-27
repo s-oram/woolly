@@ -36,3 +36,16 @@ export const getContext = (): Context => {
 		config: readConfig(),
 	};
 };
+
+export const openFilePathInEditor = async (
+	filePath: string,
+	outputChannel: vscode.OutputChannel,
+): Promise<void> => {
+	outputChannel.appendLine(`Open: "${filePath}"`);
+
+	const uri = vscode.Uri.file(filePath);
+
+	const doc = await vscode.workspace.openTextDocument(uri);
+
+	await vscode.window.showTextDocument(doc);
+};
