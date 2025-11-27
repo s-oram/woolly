@@ -4,7 +4,7 @@ import { generateStrings } from "./generateStrings";
 import type { FileProperties } from "./inferFileProperties";
 import { trimLastDirIfMatch } from "./trimLastDir";
 
-export const getSourceCandidates = (properties: FileProperties): string[] => {
+export const getPrimaryCandidates = (properties: FileProperties): string[] => {
 	const sep = path.sep;
 
 	const dirname = trimLastDirIfMatch(properties.dirname, [
@@ -14,7 +14,7 @@ export const getSourceCandidates = (properties: FileProperties): string[] => {
 	]);
 
 	switch (properties.type) {
-		case "source":
+		case "primary":
 		case "test":
 		case "storybook":
 		case "style": {

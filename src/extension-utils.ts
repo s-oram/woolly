@@ -21,7 +21,7 @@ const readConfig = (): ExtensionConfig => {
 		stylePaths: readConfigValue("stylePath", "styles|style").split("|"),
 		testPaths: readConfigValue("testPath", "tests|test").split("|"),
 
-		sourceNameCase: section.get<string>("sourceNameCase"),
+		primaryNameCase: section.get<string>("primaryNameCase"),
 		storyNameCase: section.get<string>("storyNameCase"),
 		styleNameCase: section.get<string>("styleNameCase"),
 		testNameCase: section.get<string>("testNameCase"),

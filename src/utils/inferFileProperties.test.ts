@@ -99,22 +99,22 @@ describe("inferFileProperties", () => {
 		});
 	});
 
-	test("should detect TSX source files", async () => {
+	test("should detect TSX primary files", async () => {
 		const path = "path/to/Layout.tsx";
 		const value = inferFileProperties(path);
 		expect(value).toMatchObject({
 			basename: "Layout",
-			type: "source",
+			type: "primary",
 			ext: ".tsx",
 		});
 	});
 
-	test("should detect JS source files", async () => {
+	test("should detect JS primary files", async () => {
 		const path = "path/to/Layout.js";
 		const value = inferFileProperties(path);
 		expect(value).toMatchObject({
 			basename: "Layout",
-			type: "source",
+			type: "primary",
 			ext: ".js",
 		});
 	});

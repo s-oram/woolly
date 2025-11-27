@@ -3,7 +3,7 @@ import path from "node:path";
 export type FileProperties = {
 	dirname: string;
 	basename: string;
-	type: "storybook" | "test" | "style" | "source" | "unknown";
+	type: "storybook" | "test" | "style" | "primary" | "unknown";
 	ext: string;
 };
 
@@ -56,13 +56,13 @@ export const inferFileProperties = (filepath: string): FileProperties => {
 		};
 	}
 
-	const sourceRegex = /^(.+?)\.(tsx|ts|jsx|js)$/.exec(filename);
+	const primaryRegex = /^(.+?)\.(tsx|ts|jsx|js)$/.exec(filename);
 
-	if (sourceRegex && sourceRegex[0] !== null) {
+	if (primaryRegex && primaryRegex[0] !== null) {
 		return {
 			dirname,
-			basename: sourceRegex[1],
-			type: "source",
+			basename: primaryRegex[1],
+			type: "primary",
 			ext: path.extname(filepath),
 		};
 	}

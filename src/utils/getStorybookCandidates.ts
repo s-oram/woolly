@@ -16,7 +16,7 @@ export const getStorybookCandidates = (
 	]);
 
 	switch (properties.type) {
-		case "source":
+		case "primary":
 		case "test":
 		case "storybook":
 		case "style": {

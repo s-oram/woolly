@@ -26,8 +26,8 @@
         "title": "GoToCode: Open Styles"
       },
       {
-        "command": "go-to-code.openSource",
-        "title": "GoToCode: Open Source"
+        "command": "go-to-code.openPrimary",
+        "title": "GoToCode: Open Primary"
       }
     ]
   },

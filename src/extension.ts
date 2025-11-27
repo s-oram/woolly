@@ -1,21 +1,17 @@
 import * as vscode from "vscode";
-import { openSource, openStories, openStyles, openTests } from "./commands";
+import { openPrimary, openStories, openStyles, openTests } from "./commands";
 
 export function activate(context: vscode.ExtensionContext) {
 	const outputChannel = vscode.window.createOutputChannel("Go To Code");
 
-	outputChannel.appendLine("Go To Code extension initialised 3");
+	outputChannel.appendLine("Go To Code extension initialised");
 
 	outputChannel.show(false);
 
-	// context.subscriptions.push(
-	// 	vscode.commands.registerCommand("go-to-code.openSource", () => {}),
-	// );
-
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"go-to-code.openSource",
-			openSource(outputChannel),
+			"go-to-code.openPrimary",
+			openPrimary(outputChannel),
 		),
 	);
 

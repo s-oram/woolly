@@ -3,7 +3,7 @@ export type ExtensionConfig = {
 	stylePaths: string[];
 	testPaths: string[];
 
-	sourceNameCase: "pascal" | "kebab" | (string & {}) | undefined;
+	primaryNameCase: "pascal" | "kebab" | (string & {}) | undefined;
 	storyNameCase: "pascal" | "kebab" | (string & {}) | undefined;
 	styleNameCase: "pascal" | "kebab" | (string & {}) | undefined;
 	testNameCase: "pascal" | "kebab" | (string & {}) | undefined;

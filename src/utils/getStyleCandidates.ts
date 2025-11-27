@@ -14,7 +14,7 @@ export const getStyleCandidates = (properties: FileProperties): string[] => {
 	]);
 
 	switch (properties.type) {
-		case "source":
+		case "primary":
 		case "test":
 		case "storybook":
 		case "style": {

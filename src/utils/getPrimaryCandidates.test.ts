@@ -1,4 +1,4 @@
-import { getSourceCandidates } from "./getSourceCandidates";
+import { getPrimaryCandidates } from "./getPrimaryCandidates";
 import { inferFileProperties } from "./inferFileProperties";
 
 const expectedCandidates = [
@@ -11,19 +11,19 @@ const expectedCandidates = [
 	"path/components/FancyButton.ts",
 	"path/components/FancyButton.tsx",
 ];
-describe("getSourceCandidates", () => {
+describe("getPrimaryCandidates", () => {
 	test("should return candidates for /fancy-button.tsx", async () => {
 		const properties = inferFileProperties(
 			"path/components/stories/fancy-button.tsx",
 		);
-		const candidates = getSourceCandidates(properties);
+		const candidates = getPrimaryCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
 	test("should return candidates for /stories/FancyButton.stories.tsx", async () => {
 		const properties = inferFileProperties(
 			"path/components/stories/FancyButton.stories.tsx",
 		);
-		const candidates = getSourceCandidates(properties);
+		const candidates = getPrimaryCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
 
@@ -31,7 +31,7 @@ describe("getSourceCandidates", () => {
 		const properties = inferFileProperties(
 			"path/components/tests/FancyButton.test.tsx",
 		);
-		const candidates = getSourceCandidates(properties);
+		const candidates = getPrimaryCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
 
@@ -39,7 +39,7 @@ describe("getSourceCandidates", () => {
 		const properties = inferFileProperties(
 			"path/components/styles/FancyButton.module.scss",
 		);
-		const candidates = getSourceCandidates(properties);
+		const candidates = getPrimaryCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
 });
