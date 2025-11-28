@@ -19,21 +19,33 @@ export const findPrimaryFile = (
 };
 
 export const findStoryFile = (activeEditorPath: string): string | undefined => {
-	const fileProperties = inferFileProperties(activeEditorPath);
+	const primaryFile = findPrimaryFile(activeEditorPath);
+	if (primaryFile === undefined) {
+		return undefined;
+	}
+	const fileProperties = inferFileProperties(primaryFile);
 	const candidates = getStorybookCandidates(fileProperties);
 	const storyFile = findFirstExistingFile(candidates);
 	return storyFile;
 };
 
 export const findStyleFile = (activeEditorPath: string): string | undefined => {
-	const fileProperties = inferFileProperties(activeEditorPath);
+	const primaryFile = findPrimaryFile(activeEditorPath);
+	if (primaryFile === undefined) {
+		return undefined;
+	}
+	const fileProperties = inferFileProperties(primaryFile);
 	const candidates = getStyleCandidates(fileProperties);
 	const styleFile = findFirstExistingFile(candidates);
 	return styleFile;
 };
 
 export const findTestFile = (activeEditorPath: string): string | undefined => {
-	const fileProperties = inferFileProperties(activeEditorPath);
+	const primaryFile = findPrimaryFile(activeEditorPath);
+	if (primaryFile === undefined) {
+		return undefined;
+	}
+	const fileProperties = inferFileProperties(primaryFile);
 	const candidates = getTestCandidates(fileProperties);
 	const testFile = findFirstExistingFile(candidates);
 	return testFile;
