@@ -1,7 +1,12 @@
 import type * as vscode from "vscode";
 import { getContext, openFilePathInEditor } from "./extension-utils";
+import {
+	findPrimaryFile,
+	findStoryFile,
+	findStyleFile,
+	findTestFile,
+} from "./utils/findFile";
 import { findFirstExistingFile } from "./utils/findFirstExistingFile";
-import { getPrimaryCandidates } from "./utils/getPrimaryCandidates";
 import { getStorybookCandidates } from "./utils/getStorybookCandidates";
 import { getStyleCandidates } from "./utils/getStyleCandidates";
 import { getTestCandidates } from "./utils/getTestCandidates";
@@ -14,11 +19,9 @@ export const openPrimary =
 
 		if (context.activeEditorPath) {
 			outputChannel.appendLine(
-				`Opening source for: "${context.activeEditorPath}"`,
+				`Opening primary for: "${context.activeEditorPath}"`,
 			);
-			const fileToOpen = findFirstExistingFile(
-				getPrimaryCandidates(inferFileProperties(context.activeEditorPath)),
-			);
+			const fileToOpen = findPrimaryFile(context.activeEditorPath);
 			if (fileToOpen) {
 				await openFilePathInEditor(fileToOpen, outputChannel);
 			} else {
@@ -40,10 +43,7 @@ export const openStories =
 			outputChannel.appendLine(
 				`Opening stories for: "${context.activeEditorPath}"`,
 			);
-
-			const fileToOpen = findFirstExistingFile(
-				getStorybookCandidates(inferFileProperties(context.activeEditorPath)),
-			);
+			const fileToOpen = findStoryFile(context.activeEditorPath);
 			if (fileToOpen) {
 				await openFilePathInEditor(fileToOpen, outputChannel);
 			} else {
@@ -65,9 +65,7 @@ export const openStyles = (outputChannel: vscode.OutputChannel) => async () => {
 			`Opening styles for: "${context.activeEditorPath}"`,
 		);
 
-		const fileToOpen = findFirstExistingFile(
-			getStyleCandidates(inferFileProperties(context.activeEditorPath)),
-		);
+		const fileToOpen = findStyleFile(context.activeEditorPath);
 		if (fileToOpen) {
 			await openFilePathInEditor(fileToOpen, outputChannel);
 		} else {
@@ -88,10 +86,7 @@ export const openTests = (outputChannel: vscode.OutputChannel) => async () => {
 		outputChannel.appendLine(
 			`Opening tests for: "${context.activeEditorPath}"`,
 		);
-
-		const fileToOpen = findFirstExistingFile(
-			getTestCandidates(inferFileProperties(context.activeEditorPath)),
-		);
+		const fileToOpen = findTestFile(context.activeEditorPath);
 		if (fileToOpen) {
 			await openFilePathInEditor(fileToOpen, outputChannel);
 		} else {
