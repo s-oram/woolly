@@ -1,8 +1,10 @@
 import { findFirstExistingFile } from "./findFirstExistingFile";
-import { getPrimaryCandidates } from "./getPrimaryCandidates";
-import { getStorybookCandidates } from "./getStorybookCandidates";
-import { getStyleCandidates } from "./getStyleCandidates";
-import { getTestCandidates } from "./getTestCandidates";
+import {
+	getPrimaryCandidates,
+	getStorybookCandidates,
+	getStyleCandidates,
+	getTestCandidates,
+} from "./getCandidates";
 import { inferFileProperties } from "./inferFileProperties";
 
 /**
