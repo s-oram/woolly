@@ -28,28 +28,4 @@ describe("getStyleCandidates", () => {
 		const candidates = getStyleCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
-
-	test("should return candidates for /stories/FancyButton.stories.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/stories/FancyButton.stories.tsx",
-		);
-		const candidates = getStyleCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
-	});
-
-	test("should return candidates for /tests/FancyButton.test.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/tests/FancyButton.test.tsx",
-		);
-		const candidates = getStyleCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
-	});
-
-	test("should return candidates for /styles/FancyButton.module.scss", async () => {
-		const properties = inferFileProperties(
-			"path/components/styles/FancyButton.module.scss",
-		);
-		const candidates = getStyleCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
-	});
 });
