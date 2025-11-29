@@ -38,7 +38,7 @@
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run typecheck && npm run lint && node esbuild.js --production",
-    "build-vsix": "mkdir -p extension && vsce package --out 'extension/go-to-code.vsix' --allow-missing-repository --skip-license",
+    "build-vsix": "mkdir -p extension && vsce package --out 'extension/woolly.vsix' --allow-missing-repository --skip-license",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "test": "jest --watch"
