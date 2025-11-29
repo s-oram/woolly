@@ -1,38 +1,35 @@
 import * as vscode from "vscode";
-import { openPrimary, openStories, openStyles, openTests } from "./commands";
+import { gotoPrimary, gotoStories, gotoStyles, gotoTests } from "./commands";
 
 export function activate(context: vscode.ExtensionContext) {
-	const outputChannel = vscode.window.createOutputChannel("Go To Code");
-
-	outputChannel.appendLine("Go To Code extension initialised");
-
-	outputChannel.show(false);
+	const outputChannel = vscode.window.createOutputChannel("Woolly");
+	outputChannel.appendLine("Woolly extension initialised");
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"go-to-code.openPrimary",
-			openPrimary(outputChannel),
+			"woolly.gotoPrimary",
+			gotoPrimary(outputChannel),
 		),
 	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"go-to-code.openStories",
-			openStories(outputChannel),
+			"woolly.gotoStories",
+			gotoStories(outputChannel),
 		),
 	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"go-to-code.openStyles",
-			openStyles(outputChannel),
+			"woolly.gotoStyles",
+			gotoStyles(outputChannel),
 		),
 	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
-			"go-to-code.openTests",
-			openTests(outputChannel),
+			"woolly.gotoTests",
+			gotoTests(outputChannel),
 		),
 	);
 

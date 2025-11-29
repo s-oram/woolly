@@ -7,9 +7,8 @@ import {
 	findTestFile,
 } from "./utils/findFile";
 
-export const openPrimary =
+export const gotoPrimary =
 	(outputChannel: vscode.OutputChannel) => async () => {
-		outputChannel.show(true);
 		const context = getContext();
 
 		if (context.activeEditorPath) {
@@ -27,11 +26,8 @@ export const openPrimary =
 		}
 	};
 
-export const openStories =
+export const gotoStories =
 	(outputChannel: vscode.OutputChannel) => async () => {
-		outputChannel.show(true);
-		outputChannel.appendLine(`Opening...`);
-
 		const context = getContext();
 
 		if (context.activeEditorPath) {
@@ -49,10 +45,7 @@ export const openStories =
 		}
 	};
 
-export const openStyles = (outputChannel: vscode.OutputChannel) => async () => {
-	outputChannel.show(true);
-	outputChannel.appendLine(`Opening...`);
-
+export const gotoStyles = (outputChannel: vscode.OutputChannel) => async () => {
 	const context = getContext();
 
 	if (context.activeEditorPath) {
@@ -71,10 +64,7 @@ export const openStyles = (outputChannel: vscode.OutputChannel) => async () => {
 	}
 };
 
-export const openTests = (outputChannel: vscode.OutputChannel) => async () => {
-	outputChannel.show(true);
-	outputChannel.appendLine(`Opening...`);
-
+export const gotoTests = (outputChannel: vscode.OutputChannel) => async () => {
 	const context = getContext();
 
 	if (context.activeEditorPath) {

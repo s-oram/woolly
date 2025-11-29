@@ -1,8 +1,8 @@
 {
-  "name": "go-to-code",
-  "displayName": "Go To Code",
-  "description": "Shortcuts to go to the code",
-  "version": "0.0.1",
+  "name": "woolly",
+  "displayName": "Woolly",
+  "description": "Go to files",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -14,20 +14,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "go-to-code.openStories",
-        "title": "GoToCode: Open Stories"
+        "command": "woolly.gotoPrimary",
+        "title": "Woolly: Go To Primary"
       },
       {
-        "command": "go-to-code.openTests",
-        "title": "GoToCode: Open Tests"
+        "command": "woolly.gotoStories",
+        "title": "Woolly: Go To Stories"
       },
       {
-        "command": "go-to-code.openStyles",
-        "title": "GoToCode: Open Styles"
+        "command": "woolly.gotoStyles",
+        "title": "Woolly: Go To Styles"
       },
       {
-        "command": "go-to-code.openPrimary",
-        "title": "GoToCode: Open Primary"
+        "command": "woolly.gotoTests",
+        "title": "Woolly: Go To Tests"
       }
     ]
   },
