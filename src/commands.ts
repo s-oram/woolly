@@ -6,11 +6,6 @@ import {
 	findStyleFile,
 	findTestFile,
 } from "./utils/findFile";
-import { findFirstExistingFile } from "./utils/findFirstExistingFile";
-import { getStorybookCandidates } from "./utils/getStorybookCandidates";
-import { getStyleCandidates } from "./utils/getStyleCandidates";
-import { getTestCandidates } from "./utils/getTestCandidates";
-import { inferFileProperties } from "./utils/inferFileProperties";
 
 export const openPrimary =
 	(outputChannel: vscode.OutputChannel) => async () => {
