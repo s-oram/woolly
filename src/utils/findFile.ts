@@ -15,16 +15,25 @@ export const findPrimaryFile = (
 	activeEditorPath: string,
 ): string | undefined => {
 	const fileProperties = inferFileProperties(activeEditorPath);
+	if (fileProperties.type === "primary") {
+		return activeEditorPath;
+	}
 	const candidates = getPrimaryCandidates(fileProperties);
 	const primaryFile = findFirstExistingFile(candidates);
 	return primaryFile;
 };
 
 export const findStoryFile = (activeEditorPath: string): string | undefined => {
+	const activeFileProperties = inferFileProperties(activeEditorPath);
+	if (activeFileProperties.type === "storybook") {
+		return activeEditorPath;
+	}
+
 	const primaryFile = findPrimaryFile(activeEditorPath);
 	if (primaryFile === undefined) {
 		return undefined;
 	}
+
 	const fileProperties = inferFileProperties(primaryFile);
 	const candidates = getStorybookCandidates(fileProperties);
 	const storyFile = findFirstExistingFile(candidates);
@@ -32,10 +41,16 @@ export const findStoryFile = (activeEditorPath: string): string | undefined => {
 };
 
 export const findStyleFile = (activeEditorPath: string): string | undefined => {
+	const activeFileProperties = inferFileProperties(activeEditorPath);
+	if (activeFileProperties.type === "style") {
+		return activeEditorPath;
+	}
+
 	const primaryFile = findPrimaryFile(activeEditorPath);
 	if (primaryFile === undefined) {
 		return undefined;
 	}
+
 	const fileProperties = inferFileProperties(primaryFile);
 	const candidates = getStyleCandidates(fileProperties);
 	const styleFile = findFirstExistingFile(candidates);
@@ -43,6 +58,11 @@ export const findStyleFile = (activeEditorPath: string): string | undefined => {
 };
 
 export const findTestFile = (activeEditorPath: string): string | undefined => {
+	const activeFileProperties = inferFileProperties(activeEditorPath);
+	if (activeFileProperties.type === "test") {
+		return activeEditorPath;
+	}
+
 	const primaryFile = findPrimaryFile(activeEditorPath);
 	if (primaryFile === undefined) {
 		return undefined;

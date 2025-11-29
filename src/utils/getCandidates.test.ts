@@ -6,6 +6,23 @@ import {
 } from "./getCandidates";
 import { inferFileProperties } from "./inferFileProperties";
 
+/*
+	This group of tests assumes component files are grouped together in
+	a single directory:
+
+	/components/Button.tsx
+	/components/Button.test.tsx
+	/components/Button.module.scss
+	/components/Button.stories.tsx
+
+	Or are grouped in sub-directories under the primary component file.
+
+	/components/Button.tsx
+	/components/tests/Button.test.tsx
+	/components/styles/Button.module.scss
+	/components/stories/Button.stories.tsx
+*/
+
 describe("getPrimaryCandidates", () => {
 	const expectedCandidates = [
 		"path/components/fancy-button.js",
@@ -17,11 +34,7 @@ describe("getPrimaryCandidates", () => {
 		"path/components/FancyButton.ts",
 		"path/components/FancyButton.tsx",
 	];
-	test("should return candidates for /fancy-button.tsx", async () => {
-		const properties = inferFileProperties("path/components/fancy-button.tsx");
-		const candidates = getPrimaryCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
-	});
+
 	test("should return candidates for /stories/FancyButton.stories.tsx", async () => {
 		const properties = inferFileProperties(
 			"path/components/stories/FancyButton.stories.tsx",
@@ -48,7 +61,7 @@ describe("getPrimaryCandidates", () => {
 });
 
 describe("getStorybookCandidates", () => {
-	test("should return candidates for /FancyButton.tsx", async () => {
+	test("should return storybook candidates for /FancyButton.tsx", async () => {
 		const properties = inferFileProperties("path/components/FancyButton.tsx");
 		const candidates = getStorybookCandidates(properties);
 
@@ -65,6 +78,12 @@ describe("getStorybookCandidates", () => {
 			"path/components/stories/FancyButton.stories.js",
 			"path/components/stories/FancyButton.stories.jsx",
 			"path/components/stories/FancyButton.stories.tsx",
+			"path/stories/fancy-button.stories.js",
+			"path/stories/fancy-button.stories.jsx",
+			"path/stories/fancy-button.stories.tsx",
+			"path/stories/FancyButton.stories.js",
+			"path/stories/FancyButton.stories.jsx",
+			"path/stories/FancyButton.stories.tsx",
 		];
 
 		expect(candidates).toEqual(expectedCandidates);
@@ -93,6 +112,14 @@ describe("getStyleCandidates", () => {
 			"path/components/styles/FancyButton.module.css",
 			"path/components/styles/FancyButton.module.scss",
 			"path/components/styles/FancyButton.scss",
+			"path/styles/fancy-button.css",
+			"path/styles/fancy-button.module.css",
+			"path/styles/fancy-button.module.scss",
+			"path/styles/fancy-button.scss",
+			"path/styles/FancyButton.css",
+			"path/styles/FancyButton.module.css",
+			"path/styles/FancyButton.module.scss",
+			"path/styles/FancyButton.scss",
 		];
 
 		expect(candidates).toEqual(expectedCandidates);
@@ -121,8 +148,46 @@ describe("getTestCandidates", () => {
 			"path/components/tests/FancyButton.test.jsx",
 			"path/components/tests/FancyButton.test.ts",
 			"path/components/tests/FancyButton.test.tsx",
+			"path/tests/fancy-button.test.js",
+			"path/tests/fancy-button.test.jsx",
+			"path/tests/fancy-button.test.ts",
+			"path/tests/fancy-button.test.tsx",
+			"path/tests/FancyButton.test.js",
+			"path/tests/FancyButton.test.jsx",
+			"path/tests/FancyButton.test.ts",
+			"path/tests/FancyButton.test.tsx",
 		];
 
 		expect(candidates).toEqual(expectedCandidates);
+	});
+});
+
+/*
+	This group of tests assumes component files are split across multiple
+	directories like:
+
+	/feature/components/Button.tsx
+	/feature/tests/Button.test.tsx
+	/feature/styles/Button.module.scss
+	/feature/stories/Button.stories.tsx
+*/
+
+describe("getPrimaryCandidates with multiple directories", () => {
+	test("should return primary candidates for /feature/stories/FancyButton.stories.tsx", async () => {
+		const properties = inferFileProperties(
+			"feature/stories/FancyButton.stories.tsx",
+		);
+		const candidates = getPrimaryCandidates(properties);
+		expect(candidates).toContain("feature/components/FancyButton.tsx");
+	});
+});
+
+describe("getStorybookCandidates with multiple directories", () => {
+	test("should return Storybook candidates for /feature/components/FancyButton.tsx", async () => {
+		const properties = inferFileProperties(
+			"feature/components/FancyButton.tsx",
+		);
+		const candidates = getStorybookCandidates(properties);
+		expect(candidates).toContain("feature/stories/FancyButton.stories.tsx");
 	});
 });

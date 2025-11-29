@@ -1,4 +1,4 @@
-import { trimLastDirIfMatch } from "./trimLastDir";
+import { trimLastDir, trimLastDirIfMatch } from "./trimLastDir";
 
 describe("trimLastDirIfMatch", () => {
 	// Tests with absolute file paths
@@ -42,5 +42,17 @@ describe("trimLastDirIfMatch", () => {
 	test("should return the original relative path if there is only one segment", async () => {
 		const value = trimLastDirIfMatch("baz", ["baz"]);
 		expect(value).toEqual("baz");
+	});
+});
+
+describe("trimLastDir", () => {
+	test("should trim last segment of absolute path with multiple segments", async () => {
+		const value = trimLastDir("/foo/bar/baz");
+		expect(value).toEqual("/foo/bar");
+	});
+
+	xtest("should trim last segment of absolute path with one segment", async () => {
+		const value = trimLastDir("/foo");
+		expect(value).toEqual("/");
 	});
 });

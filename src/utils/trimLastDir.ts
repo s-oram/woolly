@@ -17,3 +17,14 @@ export const trimLastDirIfMatch = (filepath: string, toTrim: string[]) => {
 			: filepath;
 	}
 };
+
+export const trimLastDir = (filepath: string) => {
+	if (path.isAbsolute(filepath)) {
+		const parts = filepath.split(path.sep);
+
+		return parts.length > 2 ? parts.slice(0, -1).join(path.sep) : filepath;
+	} else {
+		const parts = filepath.split(path.sep).filter((segment) => segment !== "");
+		return parts.length > 1 ? parts.slice(0, -1).join(path.sep) : filepath;
+	}
+};
