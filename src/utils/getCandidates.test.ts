@@ -33,14 +33,14 @@ describe("getPrimaryCandidates", () => {
 		"path/components/FancyButton.jsx",
 		"path/components/FancyButton.ts",
 		"path/components/FancyButton.tsx",
-	];
+	].sort();
 
 	test("should return candidates for /stories/FancyButton.stories.tsx", async () => {
 		const properties = inferFileProperties(
 			"path/components/stories/FancyButton.stories.tsx",
 		);
 		const candidates = getPrimaryCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 
 	test("should return candidates for /tests/FancyButton.test.tsx", async () => {
@@ -48,7 +48,7 @@ describe("getPrimaryCandidates", () => {
 			"path/components/tests/FancyButton.test.tsx",
 		);
 		const candidates = getPrimaryCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 
 	test("should return candidates for /styles/FancyButton.module.scss", async () => {
@@ -56,7 +56,7 @@ describe("getPrimaryCandidates", () => {
 			"path/components/styles/FancyButton.module.scss",
 		);
 		const candidates = getPrimaryCandidates(properties);
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 });
 
@@ -84,9 +84,9 @@ describe("getStorybookCandidates", () => {
 			"path/stories/FancyButton.stories.js",
 			"path/stories/FancyButton.stories.jsx",
 			"path/stories/FancyButton.stories.tsx",
-		];
+		].sort();
 
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 });
 
@@ -120,9 +120,9 @@ describe("getStyleCandidates", () => {
 			"path/styles/FancyButton.module.css",
 			"path/styles/FancyButton.module.scss",
 			"path/styles/FancyButton.scss",
-		];
+		].sort();
 
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 });
 
@@ -132,6 +132,22 @@ describe("getTestCandidates", () => {
 		const candidates = getTestCandidates(properties);
 
 		const expectedCandidates = [
+			"path/__tests__/fancy-button.test.js",
+			"path/__tests__/fancy-button.test.jsx",
+			"path/__tests__/fancy-button.test.ts",
+			"path/__tests__/fancy-button.test.tsx",
+			"path/__tests__/FancyButton.test.js",
+			"path/__tests__/FancyButton.test.jsx",
+			"path/__tests__/FancyButton.test.ts",
+			"path/__tests__/FancyButton.test.tsx",
+			"path/components/__tests__/fancy-button.test.js",
+			"path/components/__tests__/fancy-button.test.jsx",
+			"path/components/__tests__/fancy-button.test.ts",
+			"path/components/__tests__/fancy-button.test.tsx",
+			"path/components/__tests__/FancyButton.test.js",
+			"path/components/__tests__/FancyButton.test.jsx",
+			"path/components/__tests__/FancyButton.test.ts",
+			"path/components/__tests__/FancyButton.test.tsx",
 			"path/components/fancy-button.test.js",
 			"path/components/fancy-button.test.jsx",
 			"path/components/fancy-button.test.ts",
@@ -156,9 +172,9 @@ describe("getTestCandidates", () => {
 			"path/tests/FancyButton.test.jsx",
 			"path/tests/FancyButton.test.ts",
 			"path/tests/FancyButton.test.tsx",
-		];
+		].sort();
 
-		expect(candidates).toEqual(expectedCandidates);
+		expect(candidates.sort()).toEqual(expectedCandidates);
 	});
 });
 

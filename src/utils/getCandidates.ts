@@ -12,6 +12,7 @@ export const getPrimaryCandidates = (properties: FileProperties): string[] => {
 		"stories",
 		"tests",
 		"styles",
+		"__tests__",
 	]);
 
 	const lastSegment = dirname.split(path.sep).pop();
@@ -102,7 +103,7 @@ export const getTestCandidates = (properties: FileProperties): string[] => {
 	const group1 = generateStrings(
 		properties.dirname,
 		path.sep,
-		["", `tests${path.sep}`],
+		["", `tests${path.sep}`, `__tests__${path.sep}`],
 		[pascalCase(properties.basename), kebabCase(properties.basename)],
 		[".test.tsx", ".test.ts", ".test.jsx", ".test.js"],
 	);
@@ -112,7 +113,7 @@ export const getTestCandidates = (properties: FileProperties): string[] => {
 			? generateStrings(
 					trimLastDir(properties.dirname),
 					path.sep,
-					`tests${path.sep}`,
+					[`tests${path.sep}`, `__tests__${path.sep}`],
 					[pascalCase(properties.basename), kebabCase(properties.basename)],
 					[".test.tsx", ".test.ts", ".test.jsx", ".test.js"],
 				)
