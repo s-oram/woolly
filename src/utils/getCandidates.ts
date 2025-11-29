@@ -6,8 +6,6 @@ import type { FileProperties } from "./inferFileProperties";
 import { trimLastDirIfMatch } from "./trimLastDir";
 
 export const getPrimaryCandidates = (properties: FileProperties): string[] => {
-	const sep = path.sep;
-
 	const dirname = trimLastDirIfMatch(properties.dirname, [
 		"stories",
 		"tests",
@@ -21,7 +19,7 @@ export const getPrimaryCandidates = (properties: FileProperties): string[] => {
 		case "style": {
 			return generateStrings(
 				dirname,
-				sep,
+				path.sep,
 				[pascalCase(properties.basename), kebabCase(properties.basename)],
 				[".tsx", ".ts", ".jsx", ".js"],
 			);
@@ -41,18 +39,10 @@ export const getStorybookCandidates = (
 ): string[] => {
 	invariant(properties.type === "primary");
 
-	const sep = path.sep;
-
-	const dirname = trimLastDirIfMatch(properties.dirname, [
-		"stories",
-		"tests",
-		"styles",
-	]);
-
 	return generateStrings(
-		dirname,
-		sep,
-		["", `stories${sep}`],
+		properties.dirname,
+		path.sep,
+		["", `stories${path.sep}`],
 		[pascalCase(properties.basename), kebabCase(properties.basename)],
 		[".stories.tsx", ".stories.jsx", ".stories.js"],
 	);
@@ -61,18 +51,10 @@ export const getStorybookCandidates = (
 export const getStyleCandidates = (properties: FileProperties): string[] => {
 	invariant(properties.type === "primary");
 
-	const sep = path.sep;
-
-	const dirname = trimLastDirIfMatch(properties.dirname, [
-		"stories",
-		"tests",
-		"styles",
-	]);
-
 	return generateStrings(
-		dirname,
-		sep,
-		["", `styles${sep}`],
+		properties.dirname,
+		path.sep,
+		["", `styles${path.sep}`],
 		[pascalCase(properties.basename), kebabCase(properties.basename)],
 		[".module.scss", ".module.css", ".scss", ".css"],
 	);
@@ -81,18 +63,10 @@ export const getStyleCandidates = (properties: FileProperties): string[] => {
 export const getTestCandidates = (properties: FileProperties): string[] => {
 	invariant(properties.type === "primary");
 
-	const sep = path.sep;
-
-	const dirname = trimLastDirIfMatch(properties.dirname, [
-		"stories",
-		"tests",
-		"styles",
-	]);
-
 	return generateStrings(
-		dirname,
-		sep,
-		["", `tests${sep}`],
+		properties.dirname,
+		path.sep,
+		["", `tests${path.sep}`],
 		[pascalCase(properties.basename), kebabCase(properties.basename)],
 		[".test.tsx", ".test.ts", ".test.jsx", ".test.js"],
 	);

@@ -6,21 +6,19 @@ import {
 } from "./getCandidates";
 import { inferFileProperties } from "./inferFileProperties";
 
-const expectedCandidates = [
-	"path/components/fancy-button.js",
-	"path/components/fancy-button.jsx",
-	"path/components/fancy-button.ts",
-	"path/components/fancy-button.tsx",
-	"path/components/FancyButton.js",
-	"path/components/FancyButton.jsx",
-	"path/components/FancyButton.ts",
-	"path/components/FancyButton.tsx",
-];
 describe("getPrimaryCandidates", () => {
+	const expectedCandidates = [
+		"path/components/fancy-button.js",
+		"path/components/fancy-button.jsx",
+		"path/components/fancy-button.ts",
+		"path/components/fancy-button.tsx",
+		"path/components/FancyButton.js",
+		"path/components/FancyButton.jsx",
+		"path/components/FancyButton.ts",
+		"path/components/FancyButton.tsx",
+	];
 	test("should return candidates for /fancy-button.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/stories/fancy-button.tsx",
-		);
+		const properties = inferFileProperties("path/components/fancy-button.tsx");
 		const candidates = getPrimaryCandidates(properties);
 		expect(candidates).toEqual(expectedCandidates);
 	});
@@ -51,10 +49,7 @@ describe("getPrimaryCandidates", () => {
 
 describe("getStorybookCandidates", () => {
 	test("should return candidates for /FancyButton.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/stories/FancyButton.tsx",
-		);
-
+		const properties = inferFileProperties("path/components/FancyButton.tsx");
 		const candidates = getStorybookCandidates(properties);
 
 		const expectedCandidates = [
@@ -78,9 +73,7 @@ describe("getStorybookCandidates", () => {
 
 describe("getStyleCandidates", () => {
 	test("should return candidates for /FancyButton.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/stories/FancyButton.tsx",
-		);
+		const properties = inferFileProperties("path/components/FancyButton.tsx");
 		const candidates = getStyleCandidates(properties);
 
 		const expectedCandidates = [
@@ -108,9 +101,7 @@ describe("getStyleCandidates", () => {
 
 describe("getTestCandidates", () => {
 	test("should return candidates for /FancyButton.tsx", async () => {
-		const properties = inferFileProperties(
-			"path/components/stories/FancyButton.tsx",
-		);
+		const properties = inferFileProperties("path/components/FancyButton.tsx");
 		const candidates = getTestCandidates(properties);
 
 		const expectedCandidates = [
