@@ -105,7 +105,8 @@ export const getTestCandidates = (properties: FileProperties): string[] => {
 		path.sep,
 		["", `tests${path.sep}`, `__tests__${path.sep}`],
 		[pascalCase(properties.basename), kebabCase(properties.basename)],
-		[".test.tsx", ".test.ts", ".test.jsx", ".test.js"],
+		[".spec", ".test"],
+		[".tsx", ".ts", ".jsx", ".js"],
 	);
 
 	const group2 =
@@ -115,7 +116,8 @@ export const getTestCandidates = (properties: FileProperties): string[] => {
 					path.sep,
 					[`tests${path.sep}`, `__tests__${path.sep}`],
 					[pascalCase(properties.basename), kebabCase(properties.basename)],
-					[".test.tsx", ".test.ts", ".test.jsx", ".test.js"],
+					[".spec", ".test"],
+					[".tsx", ".ts", ".jsx", ".js"],
 				)
 			: [];
 
