@@ -15,19 +15,19 @@
     "commands": [
       {
         "command": "woolly.gotoPrimary",
-        "title": "Woolly: Go To Primary"
+        "title": "Woolly: Go to Primary File"
       },
       {
         "command": "woolly.gotoStories",
-        "title": "Woolly: Go To Stories"
+        "title": "Woolly: Go to Storybook File"
       },
       {
         "command": "woolly.gotoStyles",
-        "title": "Woolly: Go To Styles"
+        "title": "Woolly: Go to Styles File"
       },
       {
         "command": "woolly.gotoTests",
-        "title": "Woolly: Go To Tests"
+        "title": "Woolly: Go to Tests File"
       }
     ]
   },
