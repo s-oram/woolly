@@ -1,6 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 
+/**
+ * Checks each file path in `filePaths` and returns
+ * the first one that is found.
+ */
 export const findFirstExistingFile = (
 	filePaths: string[],
 ): string | undefined => {
